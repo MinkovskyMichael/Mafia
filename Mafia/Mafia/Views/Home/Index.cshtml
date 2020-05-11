@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    List<string> c = new List<string>();
+}
+
+@using (Html.BeginForm("GetCards", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="jumbotron">
+        @*<div class="form-group row">
+            <label for="numPlayers" class="col-sm-3 col-form-label">Сколько Игроков</label>
+            <div class="col-sm-3">
+                @Html.TextBox("numUsers", null, new { @class = "form-control" })
+            </div>
+        </div>*@
+        <div class="form-group row">
+            <label for="numPlayers" class="col-sm-5 col-form-label">Видите Именна Игроков</label>
+            <div class="col-sm-4">
+                @Html.TextBox("userName", null, new { @class = "form-control col-sm-2" })
+                <input type="button" id="btnUserName" width="100" value="ok" onclick="AddToSelect()" />
+            </div>
+            <div id="usersDiv">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="gridCheck">
+                    Kомисар
+                </label>
+                @Html.CheckBox("komisar", new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="gridCheck">
+                    Игроки
+                </label>
+                @Html.ListBox("users", new List<SelectListItem>(), new { @class = "" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="gridCheck">
+                    Доктор
+                </label>
+                @Html.CheckBox("doc", new { @class = "form-check-input" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label" for="gridCheck">
+                    Проститутка
+                </label>
+                @Html.CheckBox("prostitute", new { @class = "form-check-input" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Submit" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script>
+    function AddToSelect() {
+
+        var u = document.getElementById("userName").value;
+        var s = document.getElementById("users");
+        //var li = document.createElement("li");
+        //li.appendChild(document.createTextNode(u));
+        //ul.appendChild(li);
+        var option = document.createElement("option");
+        option.text = u;
+        s.add(option);
+        document.getElementById("userName").value = "";
+
+    }
+</script>

@@ -1,0 +1,20 @@
+﻿@using Mafia.Models;
+
+@{
+    ViewBag.Title = "GetCards";
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+@{
+    var mafiaDeck = (List<Card>)ViewData["MafiaDeck"]; // Cast the list
+}
+<div class="jumbotron">
+    @foreach (var m in @mafiaDeck) // Print the list
+    {
+        var h1Title = @m.PlayerName + " You are:";
+        <h1>@h1Title</h1>
+        var s = "/images/" + m.CardImgName.ToString() + ".jpg";
+        <img src="@s" />       
+        <br />
+    }
+</div>
+
